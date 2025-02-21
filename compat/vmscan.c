@@ -11,6 +11,7 @@
  */
 
 #include<linux/mm.h>
+#ifndef BPM_REGISTER_SHRINKER_NOT_PRESENT
 #ifdef BPM_REGISTER_SHRINKER_SECOND_ARG_NOT_PRESENT
 #undef register_shrinker
 int backport_register_shrinker(struct shrinker *shrinker)
@@ -19,6 +20,7 @@ int backport_register_shrinker(struct shrinker *shrinker)
 }
 #define register_shrinker backport_register_shrinker
 EXPORT_SYMBOL(register_shrinker);
+#endif
 #endif
 
 #ifdef BPM_CHECK_MOVE_UNEVICTABLE_PAGES_NOT_PRESENT
