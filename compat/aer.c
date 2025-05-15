@@ -49,6 +49,6 @@ EXPORT_SYMBOL_GPL(pci_disable_pcie_error_reporting);
 #endif
 
 #ifdef BPM_MODULE_IMPORT_NS_CXL_SUPPORT
-MODULE_IMPORT_NS(CXL);
+MODULE_IMPORT_NS("CXL");
 #endif
 

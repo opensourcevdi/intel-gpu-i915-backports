@@ -27,7 +27,7 @@
 #include "intel_iaf.h"
 
 #ifdef BPM_MODULE_IMPORT_NS_SUPPORT
-MODULE_IMPORT_NS(DMA_BUF);
+MODULE_IMPORT_NS("DMA_BUF");
 #endif
 
 I915_SELFTEST_DECLARE(static bool force_different_devices;)

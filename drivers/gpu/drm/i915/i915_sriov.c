@@ -1403,7 +1403,7 @@ int i915_sriov_pause_vf(struct pci_dev *pdev, unsigned int vfid)
 
 	return i915_sriov_pf_pause_vf(i915, vfid);
 }
-EXPORT_SYMBOL_NS_GPL(i915_sriov_pause_vf, I915);
+EXPORT_SYMBOL_NS_GPL(i915_sriov_pause_vf, "I915");
 
 /**
  * i915_sriov_resume_vf - Resume VF.
@@ -1424,7 +1424,7 @@ int i915_sriov_resume_vf(struct pci_dev *pdev, unsigned int vfid)
 
 	return i915_sriov_pf_resume_vf(i915, vfid);
 }
-EXPORT_SYMBOL_NS_GPL(i915_sriov_resume_vf, I915);
+EXPORT_SYMBOL_NS_GPL(i915_sriov_resume_vf, "I915");
 
 /**
  * i915_sriov_wait_vf_flr_done - Wait for VF FLR completion.
@@ -1455,7 +1455,7 @@ int i915_sriov_wait_vf_flr_done(struct pci_dev *pdev, unsigned int vfid)
 
 	return 0;
 }
-EXPORT_SYMBOL_NS_GPL(i915_sriov_wait_vf_flr_done, I915);
+EXPORT_SYMBOL_NS_GPL(i915_sriov_wait_vf_flr_done, "I915");
 
 static struct intel_gt *
 sriov_to_gt(struct pci_dev *pdev, unsigned int tile, bool standalone)
@@ -1501,7 +1501,7 @@ i915_sriov_ggtt_size(struct pci_dev *pdev, unsigned int vfid, unsigned int tile)
 
 	return size;
 }
-EXPORT_SYMBOL_NS_GPL(i915_sriov_ggtt_size, I915);
+EXPORT_SYMBOL_NS_GPL(i915_sriov_ggtt_size, "I915");
 
 /**
  * i915_sriov_ggtt_save - Save VF GGTT.
@@ -1528,7 +1528,7 @@ ssize_t i915_sriov_ggtt_save(struct pci_dev *pdev, unsigned int vfid, unsigned i
 
 	return intel_iov_state_save_ggtt(&gt->iov, vfid, buf, size);
 }
-EXPORT_SYMBOL_NS_GPL(i915_sriov_ggtt_save, I915);
+EXPORT_SYMBOL_NS_GPL(i915_sriov_ggtt_save, "I915");
 
 /**
  * i915_sriov_ggtt_load - Load VF GGTT.
@@ -1554,7 +1554,7 @@ i915_sriov_ggtt_load(struct pci_dev *pdev, unsigned int vfid, unsigned int tile,
 
 	return intel_iov_state_restore_ggtt(&gt->iov, vfid, buf, size);
 }
-EXPORT_SYMBOL_NS_GPL(i915_sriov_ggtt_load, I915);
+EXPORT_SYMBOL_NS_GPL(i915_sriov_ggtt_load, "I915");
 
 struct smem_buf {
 	struct list_head link;
@@ -1603,7 +1603,7 @@ void *i915_sriov_smem_alloc(struct pci_dev *pdev, size_t size)
 
 	return vaddr;
 }
-EXPORT_SYMBOL_NS_GPL(i915_sriov_smem_alloc, I915);
+EXPORT_SYMBOL_NS_GPL(i915_sriov_smem_alloc, "I915");
 
 static struct smem_buf *
 i915_sriov_smem_get_buf(struct drm_i915_private *i915, const void *vaddr)
@@ -1641,7 +1641,7 @@ void i915_sriov_smem_free(struct pci_dev *pdev, const void *vaddr)
 	list_del(&buf->link);
 	kfree(buf);
 }
-EXPORT_SYMBOL_NS_GPL(i915_sriov_smem_free, I915);
+EXPORT_SYMBOL_NS_GPL(i915_sriov_smem_free, "I915");
 
 /**
  * i915_sriov_smem_get_obj - Get SMEM GEM object.
@@ -1685,7 +1685,7 @@ i915_sriov_lmem_size(struct pci_dev *pdev, unsigned int vfid, unsigned int tile)
 
 	return intel_iov_provisioning_get_lmem(&gt->iov, vfid);
 }
-EXPORT_SYMBOL_NS_GPL(i915_sriov_lmem_size, I915);
+EXPORT_SYMBOL_NS_GPL(i915_sriov_lmem_size, "I915");
 
 /**
  * i915_sriov_lmem_map - Map VF LMEM.
@@ -1707,7 +1707,7 @@ void *i915_sriov_lmem_map(struct pci_dev *pdev, unsigned int vfid, unsigned int 
 
 	return intel_iov_state_map_lmem(&gt->iov, vfid);
 }
-EXPORT_SYMBOL_NS_GPL(i915_sriov_lmem_map, I915);
+EXPORT_SYMBOL_NS_GPL(i915_sriov_lmem_map, "I915");
 
 /**
  * i915_sriov_lmem_unmap - Unmap VF LMEM.
@@ -1728,7 +1728,7 @@ i915_sriov_lmem_unmap(struct pci_dev *pdev, unsigned int vfid, unsigned int tile
 
 	return intel_iov_state_unmap_lmem(&gt->iov, vfid);
 }
-EXPORT_SYMBOL_NS_GPL(i915_sriov_lmem_unmap, I915);
+EXPORT_SYMBOL_NS_GPL(i915_sriov_lmem_unmap, "I915");
 
 /**
  * i915_sriov_lmem_save - Save VF LMEM chunk.
@@ -1761,7 +1761,7 @@ i915_sriov_lmem_save(struct pci_dev *pdev, unsigned int vfid, unsigned int tile,
 
 	return intel_iov_state_save_lmem_chunk(&gt->iov, vfid, smem, offset, size);
 }
-EXPORT_SYMBOL_NS_GPL(i915_sriov_lmem_save, I915);
+EXPORT_SYMBOL_NS_GPL(i915_sriov_lmem_save, "I915");
 
 /**
  * i915_sriov_lmem_load - Load VF LMEM chunk.
@@ -1794,7 +1794,7 @@ i915_sriov_lmem_load(struct pci_dev *pdev, unsigned int vfid, unsigned int tile,
 
 	return intel_iov_state_restore_lmem_chunk(&gt->iov, vfid, smem, offset, size);
 }
-EXPORT_SYMBOL_NS_GPL(i915_sriov_lmem_load, I915);
+EXPORT_SYMBOL_NS_GPL(i915_sriov_lmem_load, "I915");
 
 #define COMPRESSION_RATIO 256
 
@@ -1822,7 +1822,7 @@ i915_sriov_ccs_size(struct pci_dev *pdev, unsigned int vfid, unsigned int tile)
 
 	return intel_iov_provisioning_get_lmem(&gt->iov, vfid) / COMPRESSION_RATIO;
 }
-EXPORT_SYMBOL_NS_GPL(i915_sriov_ccs_size, I915);
+EXPORT_SYMBOL_NS_GPL(i915_sriov_ccs_size, "I915");
 
 /**
  * i915_sriov_ccs_save - Save VF CCS data.
@@ -1858,7 +1858,7 @@ i915_sriov_ccs_save(struct pci_dev *pdev, unsigned int vfid, unsigned int tile, 
 
 	return intel_iov_state_save_ccs(&gt->iov, vfid, smem, offset, size);
 }
-EXPORT_SYMBOL_NS_GPL(i915_sriov_ccs_save, I915);
+EXPORT_SYMBOL_NS_GPL(i915_sriov_ccs_save, "I915");
 
 /**
  * i915_sriov_ccs_load - Load VF CCS data.
@@ -1894,7 +1894,7 @@ i915_sriov_ccs_load(struct pci_dev *pdev, unsigned int vfid, unsigned int tile, 
 
 	return intel_iov_state_restore_ccs(&gt->iov, vfid, smem, offset, size);
 }
-EXPORT_SYMBOL_NS_GPL(i915_sriov_ccs_load, I915);
+EXPORT_SYMBOL_NS_GPL(i915_sriov_ccs_load, "I915");
 
 static bool guc_supports_save_restore_v2(struct intel_guc *guc)
 {
@@ -1942,7 +1942,7 @@ i915_sriov_fw_state_size(struct pci_dev *pdev, unsigned int vfid, unsigned int t
 
 	return ret;
 }
-EXPORT_SYMBOL_NS_GPL(i915_sriov_fw_state_size, I915);
+EXPORT_SYMBOL_NS_GPL(i915_sriov_fw_state_size, "I915");
 
 /**
  * i915_sriov_fw_state_save - Save GuC FW state.
@@ -1971,7 +1971,7 @@ i915_sriov_fw_state_save(struct pci_dev *pdev, unsigned int vfid, unsigned int t
 
 	return ret;
 }
-EXPORT_SYMBOL_NS_GPL(i915_sriov_fw_state_save, I915);
+EXPORT_SYMBOL_NS_GPL(i915_sriov_fw_state_save, "I915");
 
 /**
  * i915_sriov_fw_state_load - Load GuC FW state.
@@ -1997,7 +1997,7 @@ i915_sriov_fw_state_load(struct pci_dev *pdev, unsigned int vfid, unsigned int t
 
 	return intel_iov_state_store_guc_migration_state(iov, vfid, buf, size);
 }
-EXPORT_SYMBOL_NS_GPL(i915_sriov_fw_state_load, I915);
+EXPORT_SYMBOL_NS_GPL(i915_sriov_fw_state_load, "I915");
 
 /**
  * i915_sriov_pf_clear_vf - Unprovision VF.
