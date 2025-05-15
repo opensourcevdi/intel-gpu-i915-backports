@@ -1535,7 +1535,7 @@ static int request_pscdata_from_spi(struct fdev *dev)
 	int err = 0;
 
 	/* see if the SPI device that is a child of our parent i915 device is ready */
-	spi_dev = device_find_child(dev->pdev->dev.parent, NULL, spi_driver_match_fn);
+	spi_dev = device_find_child(dev->pdev->dev.parent, NULL, (void*)spi_driver_match_fn);
 	if (!spi_dev)
 		return -ENODEV;
 
